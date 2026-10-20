@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Odonto Zoe - Dentista em Mauá | SP</title>
+  <meta name="description" content="Clínica odontológica em Mauá, SP. Especialistas em Ortodontia, Implantes, Estética Dental, Endodontia e muito mais. Atendimento humanizado com hora marcada. Agende pelo WhatsApp.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Odonto Zoe - Dentista em Mauá, SP">
+  <meta property="og:description" content="Trazendo vida para o seu sorriso. Atendimento humanizado, ambiente impecável. Agende sua avaliação pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:       '#C9A228',
+            'gold-h':   '#A08520',
+            'gold-lt':  '#F0E6B8',
+            'gold-bg':  '#FBF6E8',
+            'dk':       '#111111',
+            'dk2':      '#1A1A1A',
+            'dk3':      '#222222',
+            'cr':       '#F9F7F2',
+            'cr2':      '#F0ECE3',
+          },
+          fontFamily: {
+            sans: ['Outfit', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+
+    /* ── Custom easing ── */
+    :root { --ease-out: cubic-bezier(0.23, 1, 0.32, 1); }
+
+    /* ── Buttons ── */
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #C9A228; color: #111111;
+      font-weight: 600; border-radius: 6px;
+      padding: 13px 24px; font-size: 15px;
+      transition: background-color .18s var(--ease-out), transform .12s var(--ease-out), box-shadow .2s var(--ease-out);
+      text-decoration: none; white-space: nowrap;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-gold:hover { background: #A08520; box-shadow: 0 4px 14px rgba(201,162,40,.3); }
+    }
+    .btn-gold:active { transform: scale(.97); }
+
+    .btn-outline-light {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      border: 1.5px solid #404040; color: #b0b0b0;
+      font-weight: 500; border-radius: 6px;
+      padding: 12px 24px; font-size: 15px;
+      transition: border-color .18s var(--ease-out), color .18s var(--ease-out);
+      text-decoration: none;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .btn-outline-light:hover { border-color: #C9A228; color: #C9A228; }
+    }
+
+    /* ── Cards ── */
+    .card-service {
+      background: #ffffff; border: 1px solid #E8E3D8;
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color .22s var(--ease-out), box-shadow .22s var(--ease-out), transform .22s var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .card-service:hover {
+        border-color: #C9A228;
+        box-shadow: 0 8px 28px rgba(201,162,40,.12);
+        transform: translateY(-2px);
+      }
+      .card-service:hover .icon-box { transform: scale(1.1); }
+    }
+
+    .card-review {
+      background: #1A1A1A; border: 1px solid #2C2C2C;
+      border-radius: 12px; padding: 1.5rem;
+      transition: border-color .2s var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .card-review:hover { border-color: #3C3C3C; }
+    }
+
+    /* ── Icon box ── */
+    .icon-box {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: #FBF6E8; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform .25s var(--ease-out);
+    }
+
+    /* ── Gold accent line ── */
+    .gold-line {
+      width: 36px; height: 3px; background: #C9A228;
+      border-radius: 2px; margin: 10px 0 18px;
+    }
+
+    /* ── Float WhatsApp ── */
+    .float-wpp {
+      position: fixed; bottom: 24px; right: 24px; z-index: 999;
+      width: 58px; height: 58px; background: #25D366;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 18px rgba(37,211,102,.4);
+      transition: transform .2s var(--ease-out), box-shadow .2s var(--ease-out);
+      text-decoration: none;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .float-wpp:hover { transform: scale(1.08); box-shadow: 0 6px 22px rgba(37,211,102,.5); }
+    }
+    .float-wpp:active { transform: scale(.95); }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      overflow: hidden; max-height: 0; opacity: 0;
+      transition: max-height .3s ease, opacity .28s ease;
+    }
+    #mobile-menu.open { max-height: 400px; opacity: 1; }
+
+    /* ── Stagger — service cards (--stagger-delay via nth-child) ── */
+    .stagger-grid > .card-service:nth-child(2) { --stagger-delay: 55ms; }
+    .stagger-grid > .card-service:nth-child(3) { --stagger-delay: 110ms; }
+    .stagger-grid > .card-service:nth-child(4) { --stagger-delay: 165ms; }
+    .stagger-grid > .card-service:nth-child(5) { --stagger-delay: 220ms; }
+    .stagger-grid > .card-service:nth-child(6) { --stagger-delay: 275ms; }
+
+    /* ── Reveal on scroll ── */
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal {
+        opacity: 0; transform: translateY(14px);
+        transition: opacity .4s var(--ease-out) var(--stagger-delay, 0ms),
+                    transform .4s var(--ease-out) var(--stagger-delay, 0ms);
+      }
+      .reveal.vis {
+        opacity: 1; transform: translateY(0);
+        transition-delay: 0ms; /* reset — hover/click são instantâneos após reveal */
+      }
+    }
+
+    /* ── Check list ── */
+    .check-item { display: flex; align-items: flex-start; gap: 12px; }
+    .check-dot {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: #C9A228; flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* ── Browser surfaces ── */
+    ::selection           { background: #C9A228; color: #111111; }
+    :focus-visible        { outline: 2px solid #C9A228; outline-offset: 3px; border-radius: 3px; }
+    :focus:not(:focus-visible) { outline: none; }
+    ::-webkit-scrollbar        { width: 6px; }
+    ::-webkit-scrollbar-track  { background: #111111; }
+    ::-webkit-scrollbar-thumb  { background: #333333; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C9A228; }
+
+    /* ── Carousel dots — enlarged touch target ── */
+    [data-cdot] { cursor: pointer; padding: 8px; margin: -8px; display: inline-block; }
+  </style>
+
+  <!-- GoatCounter -->
+  <script data-goatcounter="https://teocode.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+
+<body class="font-sans bg-cr text-dk antialiased">
+
+<!-- ══════════════════════════════════════════════
+     FLOATING WHATSAPP BUTTON
+════════════════════════════════════════════════ -->
+<a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta%20na%20Odonto%20Zoe."
+   class="float-wpp" target="_blank" rel="noopener noreferrer"
+   aria-label="Chamar no WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- ══════════════════════════════════════════════
+     NAV
+════════════════════════════════════════════════ -->
+<nav class="sticky top-0 z-50 bg-dk border-b border-gray-800" style="min-height:72px;">
+  <div class="max-w-6xl mx-auto px-5 h-[72px] flex items-center justify-between">
+
+    <a href="#" class="flex flex-col leading-tight">
+      <span class="text-gold font-bold text-xl tracking-tight">Odonto Zoe</span>
+      <span class="text-gray-600 text-[11px] tracking-wide">trazendo vida para seu sorriso</span>
+    </a>
+
+    <!-- Desktop -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#servicos"    class="text-gray-400 hover:text-gold text-sm font-medium transition-colors">Serviços</a>
+      <a href="#avaliacoes"  class="text-gray-400 hover:text-gold text-sm font-medium transition-colors">Avaliações</a>
+      <a href="#sobre"       class="text-gray-400 hover:text-gold text-sm font-medium transition-colors">Sobre</a>
+      <a href="#localizacao" class="text-gray-400 hover:text-gold text-sm font-medium transition-colors">Localização</a>
+      <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação%20na%20Odonto%20Zoe."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-gold py-2.5 px-5 text-sm">Agendar avaliação</a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden flex flex-col gap-[5px] p-2" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span class="w-6 h-[2px] bg-gold block transition-all" id="b1"></span>
+      <span class="w-6 h-[2px] bg-gold block transition-all" id="b2"></span>
+      <span class="w-6 h-[2px] bg-gold block transition-all" id="b3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown -->
+  <div id="mobile-menu" class="md:hidden bg-dk border-t border-gray-800 px-5">
+    <div class="py-5 flex flex-col gap-5">
+      <a href="#servicos"    class="text-gray-300 text-sm font-medium" onclick="closeNav()">Serviços</a>
+      <a href="#avaliacoes"  class="text-gray-300 text-sm font-medium" onclick="closeNav()">Avaliações</a>
+      <a href="#sobre"       class="text-gray-300 text-sm font-medium" onclick="closeNav()">Sobre</a>
+      <a href="#localizacao" class="text-gray-300 text-sm font-medium" onclick="closeNav()">Localização</a>
+      <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação%20na%20Odonto%20Zoe."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-gold self-start text-sm" onclick="closeNav()">Agendar avaliação</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════ -->
+<section class="bg-dk min-h-[100dvh] flex items-center">
+  <div class="max-w-6xl mx-auto px-5 py-20 w-full grid md:grid-cols-2 gap-14 items-center">
+
+    <!-- Copy -->
+    <div>
+      <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase mb-5">Dentista em Mauá, SP</p>
+      <h1 class="text-[2.6rem] md:text-5xl lg:text-[3.4rem] font-bold text-white leading-[1.1] mb-6">
+        Cuide do seu<br>sorriso com<br>quem entende
+      </h1>
+      <p class="text-gray-400 text-lg leading-relaxed mb-9 max-w-md">
+        Clínica odontológica em Mauá com atendimento humanizado, ambiente impecável e total transparência com os pacientes.
+      </p>
+      <div class="flex flex-wrap gap-3 mb-10">
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação%20gratuita%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-gold">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Agendar avaliação gratuita
+        </a>
+        <a href="#servicos" class="btn-outline-light">Ver serviços</a>
+      </div>
+
+      <!-- Rating badge -->
+      <div class="flex items-center gap-3 flex-wrap">
+        <div class="flex gap-0.5">
+          <span class="text-gold text-xl">★★★★★</span>
+        </div>
+        <span class="text-white font-semibold">4,9</span>
+        <span class="text-gray-600 text-sm">· 114 avaliações no Google</span>
+      </div>
+    </div>
+
+    <!-- Visual panel (desktop only) -->
+    <div class="hidden md:flex flex-col gap-4">
+      <!-- Main card -->
+      <div class="bg-dk2 border border-gray-800 rounded-2xl p-7 flex items-center gap-5">
+        <div class="w-14 h-14 rounded-full bg-gold flex items-center justify-center flex-shrink-0 text-dk text-2xl font-bold">Z</div>
+        <div>
+          <p class="text-white font-semibold">Clínica Odonto Zoe</p>
+          <p class="text-gray-500 text-sm mt-0.5">Vila Bocaina · Mauá, SP</p>
+          <div class="flex items-center gap-1.5 mt-1">
+            <span class="text-gold text-sm">★★★★★</span>
+            <span class="text-gray-400 text-xs">4,9 · 114 avaliações</span>
+          </div>
+        </div>
+      </div>
+      <!-- Services chips -->
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-dk2 border border-gray-800 rounded-xl p-4">
+          <p class="text-gold text-xs font-semibold uppercase tracking-widest mb-1">Ortodontia</p>
+          <p class="text-gray-500 text-xs">Aparelhos fixos e alinhadores</p>
+        </div>
+        <div class="bg-dk2 border border-gray-800 rounded-xl p-4">
+          <p class="text-gold text-xs font-semibold uppercase tracking-widest mb-1">Implantes</p>
+          <p class="text-gray-500 text-xs">Reposição com tecnologia</p>
+        </div>
+        <div class="bg-dk2 border border-gray-800 rounded-xl p-4">
+          <p class="text-gold text-xs font-semibold uppercase tracking-widest mb-1">Estética Dental</p>
+          <p class="text-gray-500 text-xs">Facetas e clareamento</p>
+        </div>
+        <div class="bg-dk2 border border-gray-800 rounded-xl p-4">
+          <p class="text-gold text-xs font-semibold uppercase tracking-widest mb-1">Odontopediatria</p>
+          <p class="text-gray-500 text-xs">Saúde bucal infantil</p>
+        </div>
+      </div>
+      <!-- CTA hint -->
+      <div class="bg-gold rounded-xl p-4 flex items-center justify-between">
+        <div>
+          <p class="text-dk font-semibold text-sm">Atendimento com hora marcada</p>
+          <p class="text-dk text-xs opacity-60 mt-0.5">Sem fila. Sem espera.</p>
+        </div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SERVIÇOS
+════════════════════════════════════════════════ -->
+<section id="servicos" class="bg-cr py-20">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="mb-12 reveal">
+      <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase">Nossos serviços</p>
+      <div class="gold-line"></div>
+      <h2 class="text-3xl md:text-4xl font-bold text-dk mb-4">Tudo para o seu sorriso<br class="hidden sm:block"> em um só lugar</h2>
+      <p class="text-gray-500 max-w-lg leading-relaxed">Da primeira consulta ao resultado final, com alta gama de tratamentos e planejamento personalizado para cada paciente.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 stagger-grid">
+
+      <!-- 1 Ortodontia -->
+      <div class="card-service reveal">
+        <div class="icon-box mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2C8.5 2 6 5 6 8c0 2.5 1 4.5 2.5 5.5L10 19h4l1.5-5.5C17 12.5 18 10.5 18 8c0-3-2.5-6-6-6z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-dk text-[1.05rem] mb-2">Ortodontia</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Aparelhos fixos, autoligáveis, estéticos e alinhadores para alinhar seu sorriso com conforto e precisão.</p>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20ortodontia%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1 text-gold font-medium text-sm mt-5 hover:text-gold-h transition-colors">
+          Saber mais <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- 2 Implantodontia -->
+      <div class="card-service reveal">
+        <div class="icon-box mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="8" r="5"/>
+            <path d="M12 13v8M9 18h6"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-dk text-[1.05rem] mb-2">Implantodontia</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Reposição de dentes perdidos com função, estética e saúde duradoura. Planejamento digital individualizado.</p>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20implante%20dentário%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1 text-gold font-medium text-sm mt-5 hover:text-gold-h transition-colors">
+          Saber mais <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- 3 Estética -->
+      <div class="card-service reveal">
+        <div class="icon-box mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-dk text-[1.05rem] mb-2">Estética Dental</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Clareamento, facetas de porcelana e restaurações com resinas para um sorriso mais bonito e natural.</p>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20estética%20dental%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1 text-gold font-medium text-sm mt-5 hover:text-gold-h transition-colors">
+          Saber mais <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- 4 Odontopediatria -->
+      <div class="card-service reveal">
+        <div class="icon-box mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.501 5.501 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-dk text-[1.05rem] mb-2">Odontopediatria</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Cuidados especializados para a saúde bucal das crianças, desde os primeiros dentes até a adolescência.</p>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20odontopediatria%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1 text-gold font-medium text-sm mt-5 hover:text-gold-h transition-colors">
+          Saber mais <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- 5 Endodontia -->
+      <div class="card-service reveal">
+        <div class="icon-box mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22V12M12 12C12 8 8 5 4 6M12 12C12 8 16 5 20 6"/>
+            <path d="M6 10c0 3.5 2.7 6 6 6s6-2.5 6-6"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-dk text-[1.05rem] mb-2">Endodontia</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Tratamento de canal realizado com tecnologia avançada, preservando o dente natural e eliminando a dor.</p>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20preciso%20de%20informações%20sobre%20tratamento%20de%20canal%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1 text-gold font-medium text-sm mt-5 hover:text-gold-h transition-colors">
+          Saber mais <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- 6 Periodontia -->
+      <div class="card-service reveal">
+        <div class="icon-box mb-4">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 9a9 9 0 1118 0v5a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+            <path d="M12 9v6M9 12h6"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-dk text-[1.05rem] mb-2">Periodontia</h3>
+        <p class="text-gray-500 text-sm leading-relaxed">Prevenção e tratamento de doenças gengivais para manter a saúde da gengiva e a base dos seus dentes forte.</p>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20tenho%20interesse%20em%20periodontia%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-1 text-gold font-medium text-sm mt-5 hover:text-gold-h transition-colors">
+          Saber mais <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <div class="mt-12 text-center reveal">
+      <p class="text-gray-500 text-sm mb-4">Não encontrou o que procura? Fale com a gente.</p>
+      <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20tenho%20uma%20dúvida%20sobre%20os%20serviços%20da%20Odonto%20Zoe."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-gold">Tirar dúvidas pelo WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     AVALIAÇÕES
+════════════════════════════════════════════════ -->
+<section id="avaliacoes" class="bg-dk py-20">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="mb-12 reveal">
+      <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase">Prova social</p>
+      <div class="gold-line"></div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">O que nossos pacientes dizem</h2>
+
+      <div class="flex items-center gap-5 flex-wrap">
+        <div>
+          <span class="text-5xl font-bold text-gold">4,9</span>
+          <div class="flex gap-0.5 mt-1">
+            <span class="text-gold text-lg">★★★★★</span>
+          </div>
+          <p class="text-gray-600 text-xs mt-1">114 avaliações no Google</p>
+        </div>
+        <div class="w-px h-12 bg-gray-800 hidden sm:block"></div>
+        <a href="https://www.google.com/maps/place/Odonto+Zoe+-+Dentista+em+Mauá/@-23.6679616,-46.4570053,17z"
+           target="_blank" rel="noopener noreferrer"
+           class="text-gray-500 hover:text-gold text-sm transition-colors underline underline-offset-4">
+          Ver todas no Google Maps →
+        </a>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <div class="card-review reveal">
+        <div class="text-gold text-base mb-3">★★★★★</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">"Clínica muito boa, custo benefício, facilita o pagamento de diversas formas."</p>
+        <p class="text-gray-700 text-xs">Avaliação verificada no Google</p>
+      </div>
+
+      <div class="card-review reveal">
+        <div class="text-gold text-base mb-3">★★★★★</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">"Ótimo atendimento, ambiente agradável e ótimos profissionais!"</p>
+        <p class="text-gray-700 text-xs">Avaliação verificada no Google</p>
+      </div>
+
+      <div class="card-review reveal">
+        <div class="text-gold text-base mb-3">★★★★★</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">"Adorei a consulta, a doutora Bia foi excelente e fez um ótimo trabalho."</p>
+        <p class="text-gray-700 text-xs">Avaliação verificada no Google</p>
+      </div>
+
+      <div class="card-review reveal">
+        <div class="text-gold text-base mb-3">★★★★★</div>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">"Clínica muito boa, as dentistas são muito atenciosas e a recepção super educada e simpática. Recomendo muito, minha filha foi muito bem atendida!"</p>
+        <p class="text-gray-700 text-xs">Avaliação verificada no Google</p>
+      </div>
+
+    </div>
+
+    <div class="mt-10 text-center reveal">
+      <a href="https://www.google.com/maps/place/Odonto+Zoe+-+Dentista+em+Mauá/@-23.6679616,-46.4570053,17z"
+         target="_blank" rel="noopener noreferrer"
+         class="text-gold text-sm hover:text-gold-h transition-colors underline underline-offset-4">
+        Ver todas as 114 avaliações no Google →
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     RESULTADOS
+════════════════════════════════════════════════ -->
+<section id="resultados" class="bg-cr py-20">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="mb-12 reveal">
+      <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase">Resultados reais</p>
+      <div class="gold-line"></div>
+      <h2 class="text-3xl md:text-4xl font-bold text-dk mb-4">Sorrisos transformados<br class="hidden sm:block"> aqui na clínica</h2>
+      <p class="text-gray-500 max-w-lg leading-relaxed">Fotos reais dos nossos tratamentos — do início ao resultado final. Transparência em cada etapa.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- Foto 1: Instagram ANTES/DEPOIS — cropada via CSS para mostrar apenas os sorrisos -->
+      <div class="reveal rounded-2xl overflow-hidden border border-cr2 bg-white shadow-sm">
+        <div class="overflow-hidden" style="aspect-ratio:16/9;">
+          <img src="img/resultado-3-antes-depois.webp"
+               alt="Antes e depois — clareamento dental na Odonto Zoe"
+               class="w-full h-full object-cover"
+               style="object-position:center 50%;"
+               loading="lazy">
+        </div>
+        <div class="p-5">
+          <p class="font-semibold text-dk mb-1">Clareamento + Limpeza</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Resultado real de clareamento dental combinado com limpeza profissional.</p>
+        </div>
+      </div>
+
+      <!-- Foto 2: comparação clínica antes/depois -->
+      <div class="reveal rounded-2xl overflow-hidden border border-cr2 bg-white shadow-sm">
+        <div class="overflow-hidden" style="aspect-ratio:16/9;">
+          <img src="img/resultado-4-antes-depois.png"
+               alt="Comparação clínica antes e depois — tratamento estético na Odonto Zoe"
+               class="w-full h-full object-cover"
+               style="object-position:center 50%;"
+               loading="lazy">
+        </div>
+        <div class="p-5">
+          <p class="font-semibold text-dk mb-1">Tratamento Estético</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Transformação completa com tratamento estético — sorriso mais branco e harmonioso.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-10 text-center reveal">
+      <p class="text-gray-500 text-sm mb-5">Veja mais resultados no Instagram da clínica ou agende sua avaliação.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="https://www.instagram.com/odontozoe/" target="_blank" rel="noopener noreferrer"
+           class="inline-flex items-center gap-2 border border-gray-300 text-gray-600 hover:border-gold hover:text-gold font-medium rounded-md px-6 py-3 text-sm transition-colors">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Ver mais no Instagram
+        </a>
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vi%20os%20resultados%20no%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-gold">Quero esse resultado</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SOBRE
+════════════════════════════════════════════════ -->
+<section id="sobre" class="bg-cr py-20">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- Stats panel (left) -->
+      <div class="reveal">
+        <div class="bg-dk rounded-2xl p-8 border border-gray-800">
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div>
+              <p class="text-gold text-4xl font-bold">4,9</p>
+              <p class="text-gray-500 text-sm mt-1">Nota no Google</p>
+            </div>
+            <div>
+              <p class="text-gold text-4xl font-bold">114</p>
+              <p class="text-gray-500 text-sm mt-1">Avaliações</p>
+            </div>
+            <div>
+              <p class="text-gold text-4xl font-bold">6+</p>
+              <p class="text-gray-500 text-sm mt-1">Especialidades</p>
+            </div>
+            <div>
+              <p class="text-gold text-4xl font-bold">100%</p>
+              <p class="text-gray-500 text-sm mt-1">Com hora marcada</p>
+            </div>
+          </div>
+          <div class="border-t border-gray-800 pt-6">
+            <p class="text-gray-500 text-xs leading-relaxed">
+              A Odonto Zoe é uma clínica odontológica em Mauá comprometida em transformar sorrisos com cuidado e dedicação.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copy (right) -->
+      <div class="reveal">
+        <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase">Sobre a clínica</p>
+        <div class="gold-line"></div>
+        <h2 class="text-3xl md:text-4xl font-bold text-dk mb-6">Trazendo vida<br>para o seu sorriso</h2>
+        <p class="text-gray-500 leading-relaxed mb-8">
+          A Odonto Zoe é uma clínica odontológica em Mauá comprometida em transformar sorrisos com cuidado e dedicação. Nosso diferencial está no atendimento humanizado, ambiente impecável e total transparência com os pacientes.
+        </p>
+
+        <div class="space-y-4 mb-9">
+          <div class="check-item">
+            <div class="check-dot">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 5.2l1.8 1.8 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-gray-600 text-sm pt-0.5">Atendimento humanizado e sem pressa</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 5.2l1.8 1.8 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-gray-600 text-sm pt-0.5">Ambiente impecável e confortável</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 5.2l1.8 1.8 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-gray-600 text-sm pt-0.5">Facilita o pagamento em diversas formas</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 5.2l1.8 1.8 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-gray-600 text-sm pt-0.5">Hora marcada — sem fila, sem espera</span>
+          </div>
+          <div class="check-item">
+            <div class="check-dot">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                <path d="M2 5.2l1.8 1.8 4-4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-gray-600 text-sm pt-0.5">Total transparência no orçamento</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20conhecer%20mais%20a%20Odonto%20Zoe%20e%20agendar%20uma%20avaliação."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-gold">Agendar minha consulta</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     CONHEÇA NOSSO ESPAÇO
+════════════════════════════════════════════════ -->
+<section id="espaco" class="bg-dk py-20">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="mb-10 reveal">
+      <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase">Nossa clínica</p>
+      <div class="gold-line"></div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Conheça nosso espaço</h2>
+      <p class="text-gray-500 max-w-lg leading-relaxed">Ambiente impecável, equipamentos modernos e todo o conforto para que você se sinta tranquilo durante o tratamento.</p>
+    </div>
+
+    <!-- Carrossel automático — loop infinito, fotos no mesmo tamanho -->
+    <div class="relative overflow-hidden rounded-2xl mb-12 reveal" id="espaco-carousel">
+      <div class="flex" id="espaco-track" style="will-change:transform; transition:transform .5s cubic-bezier(0.23,1,0.32,1);">
+        <div class="min-w-full flex-shrink-0" style="aspect-ratio:4/3;">
+          <img src="img/espaco-recepcao.png"
+               alt="Sala de espera acolhedora da Odonto Zoe — com cafezinho, tv e espaço kids"
+               class="w-full h-full object-cover object-center" loading="lazy">
+        </div>
+        <div class="min-w-full flex-shrink-0" style="aspect-ratio:4/3;">
+          <img src="img/espaco-fachada.png"
+               alt="Fachada da Odonto Zoe em Mauá"
+               class="w-full h-full object-cover object-center" loading="lazy">
+        </div>
+        <div class="min-w-full flex-shrink-0" style="aspect-ratio:4/3;">
+          <img src="img/espaco-consultorio.png"
+               alt="Consultório com cadeira odontológica e equipamentos modernos"
+               class="w-full h-full object-cover object-center" loading="lazy">
+        </div>
+        <div class="min-w-full flex-shrink-0" style="aspect-ratio:4/3;">
+          <img src="img/espaco-corredor.png"
+               alt="Corredor com 4 salas de atendimento — Odonto Zoe Mauá"
+               class="w-full h-full object-cover object-center" loading="lazy">
+        </div>
+      </div>
+      <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2" aria-hidden="true">
+        <span class="w-2.5 h-2.5 rounded-full bg-white cursor-pointer transition-opacity" data-cdot="0" style="opacity:.85"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-white cursor-pointer transition-opacity" data-cdot="1" style="opacity:.35"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-white cursor-pointer transition-opacity" data-cdot="2" style="opacity:.35"></span>
+        <span class="w-2.5 h-2.5 rounded-full bg-white cursor-pointer transition-opacity" data-cdot="3" style="opacity:.35"></span>
+      </div>
+    </div>
+
+    <!-- Features em linha + CTA -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 reveal">
+      <div class="flex gap-4">
+        <div class="w-10 h-10 rounded-xl bg-dk2 border border-gray-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <p class="text-white font-medium mb-0.5">Ambiente esterilizado</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Protocolos rígidos de higiene e biossegurança em todos os procedimentos.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="w-10 h-10 rounded-xl bg-dk2 border border-gray-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <p class="text-white font-medium mb-0.5">Equipamentos modernos</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Tecnologia de ponta para diagnósticos precisos e tratamentos mais confortáveis.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <div class="w-10 h-10 rounded-xl bg-dk2 border border-gray-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.501 5.501 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div>
+          <p class="text-white font-medium mb-0.5">Atendimento acolhedor</p>
+          <p class="text-gray-500 text-sm leading-relaxed">Da recepção ao consultório, você é recebido com atenção e carinho.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center reveal">
+      <a href="https://wa.me/5511970770718?text=Olá!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20avaliação%20e%20conhecer%20a%20Odonto%20Zoe."
+         target="_blank" rel="noopener noreferrer"
+         class="btn-gold">Agendar uma visita</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     LOCALIZAÇÃO + CTA
+════════════════════════════════════════════════ -->
+<section id="localizacao" class="bg-dk py-20">
+  <div class="max-w-6xl mx-auto px-5">
+
+    <div class="mb-12 reveal">
+      <p class="text-gold text-xs font-semibold tracking-[.18em] uppercase">Onde estamos</p>
+      <div class="gold-line"></div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-2">Venha nos visitar</h2>
+      <p class="text-gray-500">Atendimento com hora marcada para você não esperar.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+
+      <!-- Info + CTA -->
+      <div class="reveal space-y-6">
+
+        <div class="flex gap-4">
+          <div class="w-11 h-11 rounded-xl bg-dk2 border border-gray-800 flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white font-medium mb-1">Endereço</p>
+            <p class="text-gray-400 text-sm">Rua General Osório, 151 — Térreo</p>
+            <p class="text-gray-400 text-sm">Vila Bocaina, Mauá — SP, 09310-050</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-11 h-11 rounded-xl bg-dk2 border border-gray-800 flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.42 10.7a19.79 19.79 0 01-3.07-8.67A2 2 0 012.33 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.18 6.18l1.27-.76a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white font-medium mb-1">Telefone / WhatsApp</p>
+            <p class="text-gray-400 text-sm">(11) 4518-3914</p>
+            <p class="text-gray-400 text-sm">(11) 97077-0718</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <div class="w-11 h-11 rounded-xl bg-dk2 border border-gray-800 flex items-center justify-center flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C9A228" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-white font-medium mb-1">Horário de funcionamento</p>
+            <p class="text-gray-400 text-sm">Segunda a sexta: 9h às 19h</p>
+            <p class="text-gray-500 text-xs mt-0.5">Confirme disponibilidade pelo WhatsApp</p>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <a href="https://wa.me/5511970770718?text=Olá!%20Gostaria%20de%20agendar%20uma%20consulta%20na%20Odonto%20Zoe."
+           target="_blank" rel="noopener noreferrer"
+           class="btn-gold w-full justify-center mt-2">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Agendar pelo WhatsApp agora
+        </a>
+
+        <!-- Social -->
+        <div class="flex items-center gap-4 pt-1">
+          <a href="https://www.instagram.com/odontozoe/" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-1.5 text-gray-600 hover:text-gold text-sm transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @odontozoe
+          </a>
+          <span class="text-gray-800">·</span>
+          <a href="https://www.facebook.com/p/Odonto-Zoe-100094715498692/" target="_blank" rel="noopener noreferrer"
+             class="flex items-center gap-1.5 text-gray-600 hover:text-gold text-sm transition-colors">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+            Facebook
+          </a>
+        </div>
+      </div>
+
+      <!-- Map -->
+      <div class="reveal rounded-2xl overflow-hidden border border-gray-800" style="height:380px;">
+        <iframe
+          src="https://maps.google.com/maps?q=-23.6679616,-46.4570053&z=17&output=embed"
+          width="100%" height="100%"
+          style="border:0; filter:grayscale(1);"
+          allowfullscreen loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização da Odonto Zoe em Mauá, SP">
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════ -->
+<footer class="bg-dk border-t border-gray-900 py-10">
+  <div class="max-w-6xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-5 mb-6">
+
+      <div class="text-center md:text-left">
+        <p class="text-gold font-bold text-lg">Odonto Zoe</p>
+        <p class="text-gray-700 text-xs mt-0.5">trazendo vida para seu sorriso</p>
+      </div>
+
+      <nav class="flex gap-5 flex-wrap justify-center" aria-label="Footer">
+        <a href="#servicos"    class="text-gray-600 hover:text-gold text-sm transition-colors">Serviços</a>
+        <a href="#avaliacoes"  class="text-gray-600 hover:text-gold text-sm transition-colors">Avaliações</a>
+        <a href="#sobre"       class="text-gray-600 hover:text-gold text-sm transition-colors">Sobre</a>
+        <a href="#localizacao" class="text-gray-600 hover:text-gold text-sm transition-colors">Localização</a>
+      </nav>
+    </div>
+
+    <div class="border-t border-gray-900 pt-6 text-center">
+      <p class="text-gray-700 text-xs">
+        © 2026 Odonto Zoe · Rua General Osório, 151 · Vila Bocaina, Mauá — SP ·
+        <a href="https://teocode.com.br/" target="_blank" rel="noopener noreferrer"
+           class="hover:text-gold transition-colors underline underline-offset-4">Site desenvolvido por TeoCode</a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════
+     JS
+════════════════════════════════════════════════ -->
+<script>
+  // Mobile nav
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  function closeNav() {
+    mobileMenu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  // Scroll reveal
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Carrossel — conheça nosso espaço (loop infinito com clone de slides)
+  (function () {
+    var track = document.getElementById('espaco-track');
+    if (!track) return;
+    var slides = Array.prototype.slice.call(track.children);
+    var n = slides.length;
+    var dots = Array.prototype.slice.call(document.querySelectorAll('[data-cdot]'));
+    var pos = 1;
+
+    // [lastClone | s0 | s1 | s2 | s3 | firstClone]
+    track.insertBefore(slides[n - 1].cloneNode(true), slides[0]);
+    track.appendChild(slides[0].cloneNode(true));
+
+    function updateDots() {
+      var real = (pos - 1 + n) % n;
+      dots.forEach(function (d, i) { d.style.opacity = i === real ? '.85' : '.35'; });
+    }
+
+    var CAROUSEL_EASE = 'transform .5s cubic-bezier(0.23,1,0.32,1)';
+
+    function jumpTo(p, anim) {
+      track.style.transition = anim ? CAROUSEL_EASE : 'none';
+      track.style.transform = 'translateX(' + (-p * 100) + '%)';
+      pos = p;
+      updateDots();
+    }
+
+    track.addEventListener('transitionend', function () {
+      if (pos === 0) {
+        track.style.transition = 'none';
+        pos = n;
+        track.style.transform = 'translateX(' + (-n * 100) + '%)';
+        updateDots();
+        requestAnimationFrame(function () { requestAnimationFrame(function () { track.style.transition = CAROUSEL_EASE; }); });
+      } else if (pos === n + 1) {
+        track.style.transition = 'none';
+        pos = 1;
+        track.style.transform = 'translateX(-100%)';
+        updateDots();
+        requestAnimationFrame(function () { requestAnimationFrame(function () { track.style.transition = CAROUSEL_EASE; }); });
+      }
+    });
+
+    jumpTo(1, false);
+    setInterval(function () { jumpTo(pos + 1, true); }, 3500);
+    dots.forEach(function (d, i) { d.addEventListener('click', function () { jumpTo(i + 1, true); }); });
+  }());
+</script>
+
+</body>
+</html>
